@@ -22,6 +22,8 @@ const Formulario = () => {
         archivo: null
     })
 
+    // const [valueSelect, setValueSelect] = useState('')
+
 
 
     const handleChange = (e) => {
@@ -35,7 +37,7 @@ const Formulario = () => {
     }
 
     const handleSubmit = () => {
-        console.log(formData)
+        console.log("todo el form ",formData)
         console.log("hola")
         // const formDataToSend = new formData();
         // formDataToSend.append('nombre', formData.nombre)
@@ -48,11 +50,12 @@ const Formulario = () => {
 
     }
 
-    // useEffect(() => {
-    //     console.log(formData)
-    //     console.log("datos", formData)
+    useEffect(() => {
+        console.log(formData)
+        console.log("datos", formData)
+        // console.log("tienda selec: ",valueSelect)
 
-    // })
+    })
 
     const VisuallyHiddenInput = styled('input')({
         clip: 'rect(0 0 0 0)',
@@ -98,12 +101,12 @@ const Formulario = () => {
                 <Autocomplete
                     disablePortal
                     options={tiendas}
+                    onChange={(event, newValue) => { setFormData({ ...formData, tienda: newValue.label }) }}
                     sx={{
                         width: '100%',
                         maxWidth: 600
                     }}
-                    renderInput={(params) => <TextField {...params} label="Tienda"
-                        onChange={(event, newValue) => { setFormData(...formData, { tienda: newValue }) }}
+                    renderInput={(params) => <TextField {...params} label="Tienda" 
 
                     />}
                 />
